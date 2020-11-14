@@ -11,10 +11,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Utils {
 
-    private void setLookAndFeel() {
+    public static void setLookAndFeel(String uiName) {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if (uiName.equals(info.getName())) {
                     UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -26,7 +26,7 @@ public class Utils {
     }
 
     public String browseForImage(String... args) {
-        setLookAndFeel();
+        setLookAndFeel("Windows");
         JFileChooser chooser = new JFileChooser();
         chooser.setPreferredSize(new Dimension(800, 600));
         chooser.setDialogTitle("Select test image...");

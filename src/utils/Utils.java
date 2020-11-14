@@ -1,6 +1,5 @@
 package utils;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -12,7 +11,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Utils {
 
-    public void setLookAndFeel() {
+    private void setLookAndFeel() {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -51,24 +50,6 @@ public class Utils {
         return "No file selected";
     }
 
-    public File checkFileName(String path, String type) {
-        int i = 0;
-        File file = new File(path + '.' + type);
-        while (file.exists()) {
-            file = new File(path + (++i) + '.' + type);
-        }
-        return file;
-    }
-
-    public Color hex2rgb(String colorStr) {
-        int i = colorStr.length() / 3;
-        return new Color(
-                Integer.valueOf(colorStr.substring(0, i), 16),
-                Integer.valueOf(colorStr.substring(i, i * 2), 16),
-                Integer.valueOf(colorStr.substring(i * 2, i * 3), 16)
-        );
-    }
-
     public void showErrorPane(String title, String message) {
         JOptionPane.showMessageDialog(new main.Main(), message, title, JOptionPane.ERROR_MESSAGE);
     }
@@ -77,5 +58,4 @@ public class Utils {
         ImageIcon icon = new ImageIcon(getClass().getResource("/utils/checked.png"));
         JOptionPane.showMessageDialog(new main.Main(), message, "Success", JOptionPane.INFORMATION_MESSAGE, icon);
     }
-
 }

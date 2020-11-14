@@ -1,10 +1,11 @@
 package main;
 
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+import app.SquareIt;
+import static app.utils.getValue;
+import static app.utils.toInt;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 import utils.Utils;
 
 /**
@@ -38,6 +39,13 @@ public class Main extends javax.swing.JFrame {
         padding_TF = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        ratioW_TF = new javax.swing.JTextField();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        ratioH_TF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Square Images");
@@ -46,7 +54,7 @@ public class Main extends javax.swing.JFrame {
         addr_LBL.setForeground(new java.awt.Color(50, 50, 50));
         addr_LBL.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
-        square_BTN.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        square_BTN.setFont(new java.awt.Font("Calibri", 0, 20)); // NOI18N
         square_BTN.setForeground(new java.awt.Color(50, 50, 50));
         square_BTN.setText("Square it");
         square_BTN.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +148,79 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("The space between border and image");
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel6.setText("Ratio");
+
+        jPanel6.setBackground(new java.awt.Color(0, 102, 153));
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Width");
+
+        ratioW_TF.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        ratioW_TF.setForeground(new java.awt.Color(50, 50, 50));
+        ratioW_TF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ratioW_TF.setText("16");
+        ratioW_TF.setBorder(null);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel7)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(ratioW_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ratioW_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2))
+        );
+
+        jPanel7.setBackground(new java.awt.Color(0, 102, 153));
+
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Height");
+
+        ratioH_TF.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        ratioH_TF.setForeground(new java.awt.Color(50, 50, 50));
+        ratioH_TF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ratioH_TF.setText("9");
+        ratioH_TF.setBorder(null);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel10)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(ratioH_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ratioH_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,15 +233,21 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(addr_LBL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(square_BTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel6)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel1))
+                                    .addGap(0, 21, Short.MAX_VALUE))
+                                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -170,7 +257,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(browse_BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addr_LBL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,7 +265,13 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(square_BTN, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -194,46 +287,24 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_browse_BTNActionPerformed
 
     private void square_BTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_square_BTNActionPerformed
-        if (imageFile != null && imageFile.exists()) {
+        String strPad = padding_TF.getText().trim();
+        String strRatioW = ratioW_TF.getText().trim();
+        String strRatioH = ratioH_TF.getText().trim();
+
+        if (imageFile != null && imageFile.exists()
+                && strPad.matches("[\\d]+")
+                && strRatioW.matches("[\\d]+") && strRatioH.matches("[\\d]+")) {
             try {
-                BufferedImage bi = ImageIO.read(imageFile);
-                BufferedImage sqBI;
-                int width = bi.getWidth();
-                int height = bi.getHeight();
-                int x, y,
-                        padding = Integer.parseInt(padding_TF.getText().trim());
+                boolean done = new SquareIt()
+                        .setImageFile(imageFile)
+                        .setPadding(toInt(strPad))
+                        .setColor(color_TF.getText().trim())
+                        .setRatio(new Dimension(toInt(strRatioW), toInt(strRatioW)))
+                        .start();
 
-                if (height > width) {
-                    height += padding * 2;
-                    sqBI = new BufferedImage(16 * height / 9, height, bi.getType());
-                    x = (sqBI.getWidth() - width) / 2;
-                    y = padding;
-                } else {
-                    int sqWidth = width + padding * 2;
-                    int sqHeight = 9 * sqWidth / 16;
-                    if (sqHeight <= height) {
-                        sqHeight = height + 2 * padding;
-                        sqWidth = 16 * sqHeight / 9;
-                    }
-                    sqBI = new BufferedImage(sqWidth, sqHeight, bi.getType());
-                    x = (sqWidth - width) / 2;
-                    y = (sqHeight - height) / 2;
+                if (done) {
+                    utils.showSuccessPane("Image squarized successfully");
                 }
-
-                Graphics2D g2d = sqBI.createGraphics();
-                g2d.setColor(utils.hex2rgb(color_TF.getText().trim()));
-                g2d.fillRect(0, 0, sqBI.getWidth(), sqBI.getHeight());
-                g2d.drawImage(bi, x, y, null);
-                g2d.dispose();
-
-                String path = imageFile.getAbsolutePath();
-                String sqPath = path.substring(0, path.lastIndexOf('.')) + "_sq";
-                String sqType = path.substring(path.lastIndexOf('.') + 1);
-                File sqFile = utils.checkFileName(sqPath, sqType);
-
-                ImageIO.write(sqBI, sqType, sqFile);
-
-                utils.showSuccessPane("Image squarized successfully");
 
             } catch (IOException ex) {
                 utils.showErrorPane(Main.class.getName(), ex.getMessage());
@@ -271,12 +342,22 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton browse_BTN;
     private javax.swing.JTextField color_TF;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField padding_TF;
+    private javax.swing.JTextField padding_TF1;
+    private javax.swing.JTextField ratioH_TF;
+    private javax.swing.JTextField ratioW_TF;
     private javax.swing.JButton square_BTN;
     // End of variables declaration//GEN-END:variables
 }
